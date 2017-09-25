@@ -139,11 +139,37 @@ def fine_scnn(seg_swin):
         
         
         	
-    
-        	        	
+def get_mean_average_pre:
+    for i in range(21):
+        get_pre_perclass(i+1)
         
         
+def get_pre_perclass(class_label, threshold):
+    gd_class_interval_num = 0
+    unsort_conf = []
+    unsort_flag = []
+    for video_name in video_set:
+        res_swin = read_video_res_swin(video_name, threshold)
+        intervals = video_class_frame_gt[video_name][class_label]
+        gd_class_interval_num += len(intervals)
+        new_res_swin = []
+        for row in res_swin:
+            if row[10] == class_label:
+                new_res_swin.append(row)
+        if len(new_res_swin) == 0:
+            continue
+        sorted(new_res_swin, key = lambda x:x[8], reverse = True)
+        indfree = [1 for _ in len(new_res_swin)]
+        ov = get_overlap(intervals, new_res_swin)
+        for ov_idx in ov:
+            for in
         
+        
+def get_overlap(gd_intervals, res_swin):
+
+        
+# different threshhold for differ res_swin
+def read_video_res_swin(video_name, threshold):
         
         
 if __name__ == "__main__":
